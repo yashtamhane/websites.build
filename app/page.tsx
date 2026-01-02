@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import TemplateGallery from '@/components/TemplateGallery';
 import ContactForm from '@/components/ContactForm';
-import Testimonials from '@/components/Testimonials';
+// import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
@@ -16,7 +16,7 @@ export default function Home() {
         <WhyChooseUs />
         <TemplateGallery />
         <ContactForm />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <FAQ />
       </main>
       <Footer />
