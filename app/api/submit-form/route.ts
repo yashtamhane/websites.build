@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { emailService } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
@@ -30,6 +31,17 @@ export async function POST(request: Request) {
 
     // Write back to file
     await fs.writeFile(filePath, JSON.stringify(submissions, null, 2));
+
+    // Send emails (don't block response if email fails)
+    Promise.all([
+      // Send notification to forms@websitesbuild.in
+      emailService.sendProjectSubmission(submission),
+      // Send auto-reply to client
+      emailService.sendProjectAutoReply(data.email, data.fullName),
+    ]).catch((error) => {
+      console.error('Error sending emails:', error);
+      // Log error but don't fail the request
+    });
 
     return NextResponse.json(
       { success: true, message: 'Form submitted successfully' },

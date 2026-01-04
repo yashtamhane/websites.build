@@ -2,21 +2,12 @@
 
 import { useState } from 'react';
 
-export default function TemplateGallery() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+export default function FeaturedTemplates() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  const templates = [
+  const featuredTemplates = [
     {
       id: 1,
-      name: 'Specialty Gifts',
-      category: 'gifts',
-      image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&auto=format&fit=crop',
-      preview: '/preview/specialty-gifts',
-      description: 'Perfect for gift shops and boutiques selling personalized products',
-    },
-    {
-      id: 2,
       name: 'Developer Portfolio',
       category: 'portfolio',
       image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop',
@@ -24,15 +15,7 @@ export default function TemplateGallery() {
       description: 'Ideal for software developers and tech professionals showcasing their projects',
     },
     {
-      id: 3,
-      name: 'Creative Portfolio',
-      category: 'portfolio',
-      image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop',
-      preview: '/preview/creative-portfolio',
-      description: 'Great for photographers, designers, and visual artists displaying their work',
-    },
-    {
-      id: 4,
+      id: 2,
       name: 'Marketing Agency',
       category: 'business',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop',
@@ -40,15 +23,7 @@ export default function TemplateGallery() {
       description: 'Built for marketing agencies and consultancies looking to attract clients',
     },
     {
-      id: 5,
-      name: 'Marketing Pro',
-      category: 'business',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop',
-      preview: '/preview/marketing-pro',
-      description: 'Premium option for established agencies wanting to stand out from competitors',
-    },
-    {
-      id: 6,
+      id: 3,
       name: 'Restaurant',
       category: 'business',
       image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop',
@@ -57,80 +32,49 @@ export default function TemplateGallery() {
     },
   ];
 
-  const categories = [
-    { id: 'all', name: 'All Templates' },
-    { id: 'business', name: 'Business' },
-    { id: 'portfolio', name: 'Portfolio' },
-  ];
-
-  const filteredTemplates =
-    selectedCategory === 'all'
-      ? templates
-      : templates.filter((t) => t.category === selectedCategory);
-
   return (
     <section id="templates" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-primary text-center mb-4">
-          Our Custom-Built Templates
+          Featured Templates
         </h2>
         <p className="text-center text-secondary mb-8 max-w-2xl mx-auto">
-          Every template is handcrafted by our team at websites.build. Select one that fits your vision, or describe your own custom design below
+          Every template is handcrafted by our team. Choose one as a starting point or let us build something completely custom for you
         </p>
 
-        {/* Category Filter and View Toggle */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-12">
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-2 rounded-full transition-all ${
-                  selectedCategory === category.id
-                    ? 'bg-accent text-background'
-                    : 'bg-background border border-primary/20 text-primary hover:border-accent'
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
-
-          {/* View Toggle - Mobile Only */}
-          <div className="flex gap-2 md:hidden">
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-lg transition-all ${
-                viewMode === 'grid'
-                  ? 'bg-accent text-background'
-                  : 'bg-background border border-primary/20 text-primary hover:border-accent'
-              }`}
-              aria-label="Grid view"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`p-2 rounded-lg transition-all ${
-                viewMode === 'list'
-                  ? 'bg-accent text-background'
-                  : 'bg-background border border-primary/20 text-primary hover:border-accent'
-              }`}
-              aria-label="List view"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+        {/* View Toggle - Mobile Only */}
+        <div className="flex justify-center gap-2 mb-8 md:hidden">
+          <button
+            onClick={() => setViewMode('grid')}
+            className={`p-2 rounded-lg transition-all ${
+              viewMode === 'grid'
+                ? 'bg-accent text-background'
+                : 'bg-background border border-primary/20 text-primary hover:border-accent'
+            }`}
+            aria-label="Grid view"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </button>
+          <button
+            onClick={() => setViewMode('list')}
+            className={`p-2 rounded-lg transition-all ${
+              viewMode === 'list'
+                ? 'bg-accent text-background'
+                : 'bg-background border border-primary/20 text-primary hover:border-accent'
+            }`}
+            aria-label="List view"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
 
-        {/* Template Grid - Desktop (always 3 columns) */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredTemplates.map((template) => (
+        {/* Desktop Grid - Always 3 columns */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
+          {featuredTemplates.map((template) => (
             <a
               key={template.id}
               href={template.preview}
@@ -156,7 +100,7 @@ export default function TemplateGallery() {
                 <p className="text-secondary text-sm mb-4">
                   {template.description}
                 </p>
-                <div className="flex gap-2">
+                <div className="flex justify-between items-center">
                   <span className="text-accent group-hover:text-accent/80 text-sm font-medium">
                     Preview →
                   </span>
@@ -169,7 +113,7 @@ export default function TemplateGallery() {
         {/* Mobile Grid View - 2 columns, compact */}
         {viewMode === 'grid' && (
           <div className="grid grid-cols-2 gap-4 md:hidden">
-            {filteredTemplates.map((template) => (
+            {featuredTemplates.map((template) => (
               <a
                 key={template.id}
                 href={template.preview}
@@ -198,7 +142,7 @@ export default function TemplateGallery() {
         {/* Mobile List View - Full width, detailed */}
         {viewMode === 'list' && (
           <div className="grid grid-cols-1 gap-6 md:hidden">
-            {filteredTemplates.map((template) => (
+            {featuredTemplates.map((template) => (
               <a
                 key={template.id}
                 href={template.preview}
@@ -234,19 +178,6 @@ export default function TemplateGallery() {
             ))}
           </div>
         )}
-
-        {/* Jump to Form CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-secondary mb-4">
-            Don't see what you're looking for? Describe your custom design.
-          </p>
-          <a
-            href="#form"
-            className="inline-block bg-accent text-background px-8 py-3 rounded-full text-lg font-semibold hover:bg-accent/90 transition-all transform hover:scale-105"
-          >
-            Get Started →
-          </a>
-        </div>
       </div>
     </section>
   );

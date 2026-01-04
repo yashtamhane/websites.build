@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-primary text-background py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-primary text-background py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="flex flex-col mb-4">
@@ -17,6 +17,38 @@ export default function Footer() {
             <p className="text-background/80 text-sm">
               Professional websites for small businesses, restaurants, and personal portfolios.
             </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-background/80 text-sm">
+              <li>
+                <a href="/templates" className="hover:text-accent transition-colors">
+                  Templates
+                </a>
+              </li>
+              <li>
+                <a href="/get-started" className="hover:text-accent transition-colors">
+                  Get Started
+                </a>
+              </li>
+              <li>
+                <a href="/team" className="hover:text-accent transition-colors">
+                  Our Team
+                </a>
+              </li>
+              <li>
+                <a href="/faq" className="hover:text-accent transition-colors">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-accent transition-colors">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Contact Info */}
@@ -40,7 +72,7 @@ export default function Footer() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+15551234567" className="hover:text-accent transition-colors">
+                <a href="tel:+919834010928" className="hover:text-accent transition-colors">
                   +91 98340 10928
                 </a>
               </div>
