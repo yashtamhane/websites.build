@@ -1,11 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Header() {
-  const [logoError, setLogoError] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -17,29 +15,15 @@ export default function Header() {
             href="/"
             className="flex items-center cursor-pointer"
           >
-            {!logoError ? (
-              <div className="relative">
-                <Image
-                  src="/logo.jpg"
-                  alt="websites.build"
-                  width={280}
-                  height={84}
-                  className="h-12 sm:h-16 w-auto"
-                  onError={() => setLogoError(true)}
-                  priority
-                />
+            <div className="flex flex-col">
+              <div className="flex items-baseline">
+                <span className="text-2xl font-bold text-primary">websites</span>
+                <span className="text-2xl font-bold text-accent">.build</span>
               </div>
-            ) : (
-              <div className="flex flex-col items-center">
-                <div className="flex items-baseline">
-                  <span className="text-xl sm:text-3xl font-bold text-primary">websites</span>
-                  <span className="text-xl sm:text-3xl font-bold text-accent">.build</span>
-                </div>
-                <span className="text-xs sm:text-sm text-secondary -mt-1">
-                  Grow your business online
-                </span>
-              </div>
-            )}
+              <span className="text-sm text-secondary -mt-1">
+                Grow your business online
+              </span>
+            </div>
           </Link>
 
           {/* Navigation - Right aligned */}

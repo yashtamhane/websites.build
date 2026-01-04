@@ -3,20 +3,20 @@
 export default function Team() {
   const teamMembers = [
     {
-      name: 'Team Member 1',
+      name: 'Yash Tamhane',
       role: 'Developer',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop',
-      bio: 'Passionate about creating beautiful, functional websites that help businesses grow.',
-      linkedin: '#',
-      instagram: '#',
+      image: '/team/member1.png',
+      bio: 'Full-stack developer passionate about building scalable web applications and crafting seamless user experiences with modern technologies.',
+      linkedin: 'https://www.linkedin.com/in/yash-tamhane/',
+      instagram: 'https://www.instagram.com/eminencet/',
     },
     {
-      name: 'Team Member 2',
-      role: 'Designer',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop',
-      bio: 'Specializes in user experience design and creating intuitive interfaces.',
-      linkedin: '#',
-      instagram: '#',
+      name: 'Utkarsh Bhalwankar',
+      role: 'Developer',
+      image: '/team/member2.jpg',
+      bio: 'Dedicated developer focused on creating clean, efficient code and delivering high-quality web solutions that exceed client expectations.',
+      linkedin: 'https://www.linkedin.com/in/utkarsh-bhalwankar-02a44b249/',
+      instagram: 'https://www.instagram.com/my_ikigai_quest/',
     },
   ];
 
@@ -29,21 +29,23 @@ export default function Team() {
           <p className="text-lg text-secondary max-w-3xl mx-auto mb-4">
             We're a small but passionate team dedicated to building custom websites that help businesses and individuals succeed online.
           </p>
-          <p className="text-secondary max-w-3xl mx-auto">
+          {/* <p className="text-secondary max-w-3xl mx-auto">
             Every website we create is hand-coded from scratch, ensuring quality, performance, and uniqueness. We believe in transparent communication, fixed timelines, and delivering exactly what our clients envision.
-          </p>
+          </p> */}
         </div>
 
         {/* Team Members Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {teamMembers.map((member, index) => (
             <div key={index} className="bg-background rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="relative h-80">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative h-80 flex items-center justify-center bg-primary/5">
+                <div className="w-64 h-64 rounded-full overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-primary mb-1">{member.name}</h3>
