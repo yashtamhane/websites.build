@@ -52,17 +52,10 @@ export default function SimpleContactForm() {
               </svg>
             </div>
             <h3 className="font-semibold text-primary mb-2">Email</h3>
-            <div className="text-sm text-secondary space-y-1">
-              <p>
-                <a href="mailto:yashst24us@gmail.com" className="hover:text-accent transition-colors">
-                  yashst24us@gmail.com
-                </a>
-              </p>
-              <p>
-                <a href="mailto:utkarsh.bhalwankar@gmail.com" className="hover:text-accent transition-colors">
-                  utkarsh.bhalwankar@gmail.com
-                </a>
-              </p>
+            <div className="text-sm text-secondary">
+              <a href="mailto:info@websitesbuild.in" className="hover:text-accent transition-colors">
+                info@websitesbuild.in
+              </a>
             </div>
           </div>
 

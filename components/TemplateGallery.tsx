@@ -241,7 +241,7 @@ export default function TemplateGallery() {
             Don't see what you're looking for? Describe your custom design.
           </p>
           <a
-            href="#form"
+            href="/get-started"
             className="inline-block bg-accent text-background px-8 py-3 rounded-full text-lg font-semibold hover:bg-accent/90 transition-all transform hover:scale-105"
           >
             Get Started →

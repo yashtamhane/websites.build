@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { sanitizeForEmail } from './validation';
 
 // Create reusable transporter
 const transporter = nodemailer.createTransport({
@@ -46,15 +47,15 @@ export const emailService = {
               <div class="content">
                 <div class="field">
                   <div class="label">Name:</div>
-                  <div class="value">${data.name}</div>
+                  <div class="value">${sanitizeForEmail(data.name)}</div>
                 </div>
                 <div class="field">
                   <div class="label">Email:</div>
-                  <div class="value">${data.email}</div>
+                  <div class="value">${sanitizeForEmail(data.email)}</div>
                 </div>
                 <div class="field">
                   <div class="label">Message:</div>
-                  <div class="value">${data.message.replace(/\n/g, '<br>')}</div>
+                  <div class="value">${sanitizeForEmail(data.message)}</div>
                 </div>
               </div>
             </div>
@@ -67,6 +68,96 @@ New Contact Inquiry
 Name: ${data.name}
 Email: ${data.email}
 Message: ${data.message}
+      `,
+    };
+
+    return transporter.sendMail(mailOptions);
+  },
+
+  // Send auto-reply to client after contact form submission
+  async sendContactAutoReply(clientEmail: string, clientName: string, clientMessage: string) {
+    const mailOptions = {
+      from: `"websites.build" <noreply@websitesbuild.in>`,
+      to: clientEmail,
+      subject: 'Thank you for contacting us - websites.build',
+      html: `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+              .header { background: #2563eb; color: white; padding: 30px 20px; border-radius: 8px 8px 0 0; text-align: center; }
+              .content { background: #ffffff; padding: 30px 20px; border: 1px solid #e5e7eb; border-top: none; }
+              .footer { background: #f9fafb; padding: 20px; border-radius: 0 0 8px 8px; text-align: center; font-size: 14px; color: #6b7280; }
+              h1 { margin: 0; font-size: 24px; }
+              p { margin: 15px 0; }
+              .message-box { background: #f9fafb; padding: 15px; border-left: 4px solid #2563eb; margin: 20px 0; }
+              .message-label { font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+              .message-content { color: #4b5563; font-style: italic; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Thank You for Reaching Out!</h1>
+              </div>
+              <div class="content">
+                <p>Hi ${clientName},</p>
+
+                <p>Thank you for contacting websites.build! We've received your message and appreciate you taking the time to reach out to us.</p>
+
+                <div class="message-box">
+                  <div class="message-label">Your Message:</div>
+                  <div class="message-content">${sanitizeForEmail(clientMessage)}</div>
+                </div>
+
+                <p>Our team will review your inquiry and get back to you as soon as possible, typically within 24 hours.</p>
+
+                <p>In the meantime, feel free to:</p>
+                <ul>
+                  <li>Browse our <a href="https://websitesbuild.in/templates" style="color: #2563eb;">template gallery</a></li>
+                  <li>Learn more about <a href="https://websitesbuild.in/team" style="color: #2563eb;">our team</a></li>
+                  <li>Check out our <a href="https://websitesbuild.in/faq" style="color: #2563eb;">FAQ</a></li>
+                </ul>
+
+                <p style="margin-top: 30px;">
+                  Best regards,<br>
+                  <strong>The websites.build Team</strong>
+                </p>
+              </div>
+              <div class="footer">
+                <p style="margin: 10px 0 0 0;">This is an automated message. Please do not reply to this email.</p>
+                <p style="margin: 10px 0 0 0;">For inquiries, contact us at <a href="mailto:info@websitesbuild.in" style="color: #2563eb;">info@websitesbuild.in</a></p>
+                <p style="margin: 10px 0 0 0;">&copy; ${new Date().getFullYear()} websites.build. All rights reserved.</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `,
+      text: `
+Hi ${clientName},
+
+Thank you for contacting websites.build! We've received your message and appreciate you taking the time to reach out to us.
+
+YOUR MESSAGE:
+${clientMessage}
+
+Our team will review your inquiry and get back to you as soon as possible, typically within 24 hours.
+
+In the meantime, feel free to:
+- Browse our template gallery: https://websitesbuild.in/templates
+- Learn more about our team: https://websitesbuild.in/team
+- Check out our FAQ: https://websitesbuild.in/faq
+
+Best regards,
+The websites.build Team
+
+---
+This is an automated message. Please do not reply to this email.
+For inquiries, contact us at info@websitesbuild.in
+
+© ${new Date().getFullYear()} websites.build. All rights reserved.
       `,
     };
 
@@ -108,22 +199,22 @@ Message: ${data.message}
                   <div class="section-title">Contact Information</div>
                   <div class="field">
                     <div class="label">Full Name:</div>
-                    <div class="value">${data.fullName}</div>
+                    <div class="value">${sanitizeForEmail(data.fullName)}</div>
                   </div>
                   <div class="field">
                     <div class="label">Email:</div>
-                    <div class="value">${data.email}</div>
+                    <div class="value">${sanitizeForEmail(data.email)}</div>
                   </div>
                   <div class="field">
                     <div class="label">Phone:</div>
-                    <div class="value">${data.phone}</div>
+                    <div class="value">${sanitizeForEmail(data.phone)}</div>
                   </div>
                 </div>
 
                 <div class="section">
                   <div class="section-title">Project Type</div>
                   <div class="field">
-                    <div class="value">${data.projectType}</div>
+                    <div class="value">${sanitizeForEmail(data.projectType)}</div>
                   </div>
                 </div>
 
@@ -132,12 +223,12 @@ Message: ${data.message}
                   <div class="section-title">Business Information</div>
                   <div class="field">
                     <div class="label">Business Name:</div>
-                    <div class="value">${data.businessName}</div>
+                    <div class="value">${sanitizeForEmail(data.businessName)}</div>
                   </div>
                   ${data.industry ? `
                   <div class="field">
                     <div class="label">Industry:</div>
-                    <div class="value">${data.industry}</div>
+                    <div class="value">${sanitizeForEmail(data.industry)}</div>
                   </div>
                   ` : ''}
                 </div>
@@ -147,7 +238,7 @@ Message: ${data.message}
                 <div class="section">
                   <div class="section-title">Features Required</div>
                   <ul class="list">
-                    ${data.features.map((feature: string) => `<li>${feature}</li>`).join('')}
+                    ${data.features.map((feature: string) => `<li>${sanitizeForEmail(feature)}</li>`).join('')}
                   </ul>
                 </div>
                 ` : ''}
@@ -166,7 +257,7 @@ Message: ${data.message}
                 <div class="section">
                   <div class="section-title">Budget</div>
                   <div class="field">
-                    <div class="value">${data.budget}</div>
+                    <div class="value">${sanitizeForEmail(data.budget)}</div>
                   </div>
                 </div>
                 ` : ''}
@@ -175,7 +266,7 @@ Message: ${data.message}
                 <div class="section">
                   <div class="section-title">Timeline</div>
                   <div class="field">
-                    <div class="value">${data.timeline}</div>
+                    <div class="value">${sanitizeForEmail(data.timeline)}</div>
                   </div>
                 </div>
                 ` : ''}
@@ -184,7 +275,7 @@ Message: ${data.message}
                 <div class="section">
                   <div class="section-title">Additional Information</div>
                   <div class="field">
-                    <div class="value">${data.additionalInfo.replace(/\n/g, '<br>')}</div>
+                    <div class="value">${sanitizeForEmail(data.additionalInfo)}</div>
                   </div>
                 </div>
                 ` : ''}
@@ -193,7 +284,7 @@ Message: ${data.message}
                 <div class="section">
                   <div class="section-title">How They Found Us</div>
                   <div class="field">
-                    <div class="value">${data.hearAboutUs}</div>
+                    <div class="value">${sanitizeForEmail(data.hearAboutUs)}</div>
                   </div>
                 </div>
                 ` : ''}
