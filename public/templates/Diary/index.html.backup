@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aditi Chandanwar - ServiceNow Developer, Data Science Enthusiast, and Creative Soul">
+    <title>Aditi Chandanwar | Portfolio</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Space+Grotesk:wght@300;400;500;600;700&family=Pacifico&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Bodoni+Moda:wght@400;600;700;900&family=Righteous&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    
+    <canvas id="petals-canvas"></canvas>
+
+    
+    <div class="radial-menu" id="radial-menu">
+        <div class="menu-trigger" id="menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="radial-nav">
+            <a href="#home" class="radial-link">
+                <span class="link-text">Home</span>
+            </a>
+            <a href="#about" class="radial-link">
+                <span class="link-text">About</span>
+            </a>
+            <a href="#skills" class="radial-link">
+                <span class="link-text">Skills</span>
+            </a>
+            <a href="#work" class="radial-link">
+                <span class="link-text">Work</span>
+            </a>
+            <a href="#creative" class="radial-link">
+                <span class="link-text">Creative</span>
+            </a>
+            <a href="#contact" class="radial-link">
+                <span class="link-text">Contact</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <div class="scroll-progress-wrapper">
+        <svg class="progress-ring" width="60" height="60">
+            <circle class="progress-ring-circle" stroke="#FF69B4" stroke-width="3" fill="transparent" r="27" cx="30" cy="30"/>
+        </svg>
+        <span class="progress-text">0%</span>
+    </div>
+
+    
+    <section id="home" class="hero-experimental">
+        <div class="hero-grid">
+            
+            <div class="vertical-text" data-scroll data-scroll-speed="2">
+                <h1 class="name-vertical">ADITI</h1>
+            </div>
+
+            
+            <div class="hero-main">
+                <div class="eyebrow-text" data-aos="fade-down">ServiceNow Developer × Data Scientist × Creative Soul</div>
+
+                <h2 class="hero-headline" data-aos="fade-up" data-aos-delay="200">
+                    <span class="headline-creative">Crafting</span>
+                    <span class="headline-tech">Digital</span>
+                    <span class="headline-bold">Experiences</span>
+                </h2>
+
+                <p class="hero-manifesto" data-aos="fade-up" data-aos-delay="400">
+                    Where <em>technology</em> meets <em>creativity</em>, where <em>data</em> tells stories,
+                    and where <em>innovation</em> wears heels.
+                </p>
+
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="600">
+                    <a href="#work" class="cta-primary">
+                        <span>Explore Work</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                    <a href="files/Resume.docx" class="cta-secondary" download="Aditi_Chandanwar_Resume.docx">
+                        <span>Resume</span>
+                    </a>
+                </div>
+            </div>
+
+            
+            <div class="hero-photo-container" data-aos="zoom-in" data-aos-delay="800">
+                <div class="photo-frame-wrapper">
+                    <div class="photo-frame">
+                        <div class="photo-inner">
+                            <img src="files/intro.JPG" alt="Aditi Chandanwar" class="hero-photo">
+                            <div class="photo-stamp">EST. 2021</div>
+                        </div>
+                        <div class="frame-caption">Pune, India</div>
+                    </div>
+
+                    
+                    <div class="floating-stats">
+                        <div class="stat-bubble" data-aos="fade-up" data-aos-delay="900">
+                            <span class="stat-num">7.78</span>
+                            <span class="stat-label">CGPA</span>
+                        </div>
+                        <div class="stat-bubble" data-aos="fade-up" data-aos-delay="1000">
+                            <span class="stat-num">10+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-bubble" data-aos="fade-up" data-aos-delay="1100">
+                            <span class="stat-num">SIH</span>
+                            <span class="stat-label">Winner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>AI/ML</span>
+                <span class="dot">•</span>
+                <span>Data Science</span>
+                <span class="dot">•</span>
+                <span>ServiceNow</span>
+                <span class="dot">•</span>
+                <span>Python</span>
+                <span class="dot">•</span>
+                <span>Fashion</span>
+                <span class="dot">•</span>
+                <span>Poetry</span>
+                <span class="dot">•</span>
+                <span>Music</span>
+                <span class="dot">•</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>AI/ML</span>
+                <span class="dot">•</span>
+                <span>Data Science</span>
+                <span class="dot">•</span>
+                <span>ServiceNow</span>
+                <span class="dot">•</span>
+                <span>Python</span>
+                <span class="dot">•</span>
+                <span>Fashion</span>
+                <span class="dot">•</span>
+                <span>Poetry</span>
+                <span class="dot">•</span>
+                <span>Music</span>
+                <span class="dot">•</span>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="about-split">
+        <div class="split-container">
+            
+            <div class="split-panel professional" data-aos="fade-right">
+                <div class="panel-number">02</div>
+                <div class="panel-content">
+                    <h3 class="panel-title">The Professional</h3>
+                    <div class="panel-body">
+                        <p class="intro-text">Final-year E&TC Engineering student from PCCOE with a passion for turning complex problems into elegant solutions.</p>
+
+                        <div class="credentials">
+                            <div class="credential-item">
+                                <span class="cred-label">Education</span>
+                                <span class="cred-value">B.Tech E&TC • 7.78 CGPA</span>
+                            </div>
+                            <div class="credential-item">
+                                <span class="cred-label">Experience</span>
+                                <span class="cred-value">Data Science @ Celebal</span>
+                            </div>
+                            <div class="credential-item">
+                                <span class="cred-label">Achievement</span>
+                                <span class="cred-value">Smart India Hackathon Winner</span>
+                            </div>
+                        </div>
+
+                        <div class="expertise-tags">
+                            <span>ServiceNow</span>
+                            <span>Python</span>
+                            <span>AI/ML</span>
+                            <span>Data Science</span>
+                            <span>Networks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="split-panel creative" data-aos="fade-left">
+                <div class="panel-number">02.5</div>
+                <div class="panel-content">
+                    <h3 class="panel-title creative-title">The Creative</h3>
+                    <div class="panel-body">
+                        <p class="intro-text handwritten">Beyond code and algorithms, I find my rhythm in creative expression...</p>
+
+                        <div class="creative-list">
+                            <div class="creative-item">
+                                <svg class="creative-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                    
+                                    <path d="M12 2L9 6H6L4 8V22H20V8L18 6H15L12 2ZM12 4.5L13.5 7H15.5L17 8.5V20H7V8.5L8.5 7H10.5L12 4.5Z"/>
+                                    <path d="M9 10V20H15V10C15 9.5 14.5 9 14 9H10C9.5 9 9 9.5 9 10Z"/>
+                                </svg>
+                                <div>
+                                    <h4>Fashion</h4>
+                                    <p>Curating aesthetics & trending designs</p>
+                                </div>
+                            </div>
+
+                            <div class="creative-item">
+                                <svg class="creative-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                    
+                                    <path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/>
+                                </svg>
+                                <div>
+                                    <h4>Poetry</h4>
+                                    <p>Weaving emotions into verses</p>
+                                </div>
+                            </div>
+
+                            <div class="creative-item">
+                                <svg class="creative-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                    
+                                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                                </svg>
+                                <div>
+                                    <h4>Singing</h4>
+                                    <p>Finding harmony in melodies</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="creative-quote">"Innovation isn't just technical—it's artistic."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="section-divider-wave">
+            <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+                <path d="M0,50 Q300,0 600,50 T1200,50 L1200,100 L0,100 Z" fill="#FFF5F7"/>
+            </svg>
+        </div>
+    </section>
+
+    
+    <section id="skills" class="skills-bento">
+        <div class="container-fluid">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-num">03</span>
+                <h2 class="section-title-large">Expertise</h2>
+            </div>
+
+            <div class="bento-grid">
+                
+                <div class="bento-card large primary" data-aos="zoom-in">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <h3>ServiceNow Development</h3>
+                        <p>Platform development, workflow automation, and enterprise solutions</p>
+                        <div class="skill-meter">
+                            <div class="meter-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="bento-card medium" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-icon">PY</div>
+                    <h4>Python</h4>
+                    <div class="skill-level">Expert</div>
+                </div>
+
+                
+                <div class="bento-card small accent" data-aos="zoom-in" data-aos-delay="200">
+                    <h4>AI/ML</h4>
+                    <span class="badge">85%</span>
+                </div>
+
+                
+                <div class="bento-card wide" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>Data Science</h3>
+                    <div class="tech-stack">
+                        <span>Pandas</span>
+                        <span>NumPy</span>
+                        <span>Scikit-learn</span>
+                        <span>TensorFlow</span>
+                    </div>
+                </div>
+
+                
+                <div class="bento-card tall" data-aos="zoom-in" data-aos-delay="400">
+                    <h4>Languages</h4>
+                    <ul class="lang-list">
+                        <li>English<span>95%</span></li>
+                        <li>Marathi<span>100%</span></li>
+                        <li>Hindi<span>95%</span></li>
+                    </ul>
+                </div>
+
+                
+                <div class="bento-card medium" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card-icon">SQL</div>
+                    <h4>Database</h4>
+                    <p>Query optimization & management</p>
+                </div>
+
+                <div class="bento-card medium accent" data-aos="zoom-in" data-aos-delay="600">
+                    <h4>Networks & Security</h4>
+                    <p>Cisco • OSI • TCP/IP</p>
+                </div>
+
+                
+                <div class="bento-card large gradient" data-aos="zoom-in" data-aos-delay="700">
+                    <h3>Soft Skills</h3>
+                    <div class="soft-skills-grid">
+                        <span>Communication</span>
+                        <span>Brainstorming</span>
+                        <span>Open-minded</span>
+                        <span>Presentation</span>
+                        <span>Detail-oriented</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="work" class="work-horizontal">
+        <div class="section-header sticky-header">
+            <span class="section-num">04</span>
+            <h2 class="section-title-large">Selected Works</h2>
+        </div>
+
+        <div class="horizontal-scroll-wrapper">
+            <div class="scroll-container">
+                
+                <div class="project-panel">
+                    <div class="project-visual">
+                        <div class="project-img-placeholder">
+                            <span class="project-number">01</span>
+                            <h3>TalentAlign</h3>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">AI/ML Project</span>
+                        <h3 class="project-name">TalentAlign - AI Interviewer</h3>
+                        <p class="project-desc">AI-powered resume analysis and interview system using LLM workflows. Generates personalized questions and evaluates candidates on a 10-point scale.</p>
+                        <div class="project-tech-tags">
+                            <span>Python</span>
+                            <span>LLM</span>
+                            <span>PyPDFLoader</span>
+                            <span>deepseek r1</span>
+                        </div>
+                        <button class="project-details-btn" onclick="openModal('modal1')">View Details →</button>
+                    </div>
+                </div>
+
+                
+                <div class="project-panel accent">
+                    <div class="project-visual">
+                        <div class="project-img-placeholder award">
+                            <span class="project-number">02</span>
+                            <h3>Hydrominex</h3>
+                            <div class="award-badge">SIH Winner 🏆</div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Smart India Hackathon Winner</span>
+                        <h3 class="project-name">Hydrominex</h3>
+                        <p class="project-desc">Navigation system for adverse weather using fog-penetrating AI-ML technology. Achieved 80%+ obstacle detection accuracy with sensor fusion.</p>
+                        <div class="project-tech-tags">
+                            <span>ML</span>
+                            <span>GPS</span>
+                            <span>Computer Vision</span>
+                            <span>Sensor Fusion</span>
+                        </div>
+                        <button class="project-details-btn" onclick="openModal('modal2')">View Details →</button>
+                    </div>
+                </div>
+
+                
+                <div class="project-panel">
+                    <div class="project-visual">
+                        <div class="project-img-placeholder">
+                            <span class="project-number">03</span>
+                            <h3>Network Anomaly Detection</h3>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Data Science @ Celebal</span>
+                        <h3 class="project-name">Anomaly Detection in Network Traffic</h3>
+                        <p class="project-desc">Unsupervised learning system using isolation forests and autoencoders to detect security breaches and system malfunctions.</p>
+                        <div class="project-tech-tags">
+                            <span>Python</span>
+                            <span>Autoencoders</span>
+                            <span>Isolation Forests</span>
+                            <span>Security</span>
+                        </div>
+                        <button class="project-details-btn" onclick="openModal('modal3')">View Details →</button>
+                    </div>
+                </div>
+
+                
+                <div class="project-panel end-panel">
+                    <div class="end-content">
+                        <h3>More Coming Soon...</h3>
+                        <p>Currently working on exciting new projects</p>
+                        <a href="#contact" class="end-cta">Let's Collaborate →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="scroll-hint">
+            <span>Scroll →</span>
+        </div>
+    </section>
+
+    
+    <section id="creative" class="creative-magazine">
+        <div class="magazine-grid">
+            
+            <div class="mag-spread title-spread" data-aos="fade-up">
+                <span class="section-num">05</span>
+                <h2 class="spread-title">
+                    <span class="title-line">Beyond</span>
+                    <span class="title-line accent">The Code</span>
+                </h2>
+                <p class="spread-subtitle">A glimpse into my creative world</p>
+            </div>
+
+            
+            <div class="mag-spread fashion-spread" data-aos="fade-up" data-aos-delay="200">
+                <div class="spread-content">
+                    <div class="spread-image">
+                        <div class="polaroid-gallery">
+                            <div class="polaroid polaroid-1">
+                                <img src="files/f1.jpg" alt="Fashion moment 1">
+                            </div>
+                            <div class="polaroid polaroid-2">
+                                <img src="files/f2.jpg" alt="Fashion moment 2">
+                            </div>
+                            <div class="polaroid polaroid-3">
+                                <img src="files/f3.jpg" alt="Fashion moment 3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spread-text">
+                        <h3 class="spread-heading">Fashion</h3>
+                        <p class="spread-body">Style is my second language. From curating aesthetics to staying ahead of trends, fashion is where I express my personality beyond pixels and code.</p>
+                        <blockquote>"Fashion is the armor to survive everyday life"</blockquote>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="mag-spread poetry-spread" data-aos="fade-up" data-aos-delay="400">
+                <div class="spread-content">
+                    <div class="spread-text">
+                        <h3 class="spread-heading handwritten">Poetry</h3>
+                        <div class="poem-sample">
+                            <p class="verse">Words dance on paper,</p>
+                            <p class="verse">Emotions find their rhythm,</p>
+                            <p class="verse">Verses tell stories...</p>
+                        </div>
+                        <p class="spread-body">I weave emotions into verses, capturing moments and feelings in the art of words. Poetry is my meditation, my escape.</p>
+                    </div>
+                    <div class="spread-image">
+                        <div class="polaroid-gallery">
+                            <div class="polaroid polaroid-1">
+                                <img src="files/p1.jpg" alt="Poetry moment 1">
+                            </div>
+                            <div class="polaroid polaroid-2">
+                                <img src="files/p2.jpg" alt="Poetry moment 2">
+                            </div>
+                            <div class="polaroid polaroid-3">
+                                <img src="files/p3.jpg" alt="Poetry moment 3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="mag-spread music-spread" data-aos="fade-up" data-aos-delay="600">
+                <div class="spread-content">
+                    <div class="spread-image">
+                        <div class="polaroid-gallery">
+                            <div class="polaroid polaroid-1">
+                                <img src="files/s1.jpg" alt="Singing moment 1">
+                            </div>
+                            <div class="polaroid polaroid-2">
+                                <img src="files/s2.jpg" alt="Singing moment 2">
+                            </div>
+                            <div class="polaroid polaroid-3">
+                                <img src="files/s3.jpg" alt="Singing moment 3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spread-text">
+                        <h3 class="spread-heading">Singing</h3>
+                        <p class="spread-body">Music flows through my veins. Whether it's discovering new artists or lending my voice to melodies, singing is where I find my harmony.</p>
+                        <div class="music-notes">♪ ♫ ♪</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer id="contact" class="footer-contact">
+        <div class="footer-grid">
+            <div class="footer-left">
+                <h2 class="contact-title">
+                    <span>Let's Create</span>
+                    <span class="highlight">Something</span>
+                    <span>Amazing</span>
+                </h2>
+            </div>
+
+            <div class="footer-right">
+                <div class="contact-info-modern">
+                    <div class="info-item">
+                        <span class="info-label">Email</span>
+                        <a href="mailto:aditi7inc@gmail.com" class="info-value">aditi7inc@gmail.com</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone</span>
+                        <a href="tel:+919112811390" class="info-value">+91 9112811390</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Location</span>
+                        <span class="info-value">Pune | Chh. Sambhajinagar</span>
+                    </div>
+                </div>
+
+                <div class="social-modern">
+                    <a href="https://www.linkedin.com/in/aditi-chandanwar-a42227237" class="social-item" target="_blank" rel="noopener noreferrer">
+                        <span class="social-name">LinkedIn</span>
+                        <span class="social-arrow">→</span>
+                    </a>
+                    <a href="https://github.com/Aditi-Chandanwar/Aditi-Chandanwar" class="social-item" target="_blank" rel="noopener noreferrer">
+                        <span class="social-name">GitHub</span>
+                        <span class="social-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+            <h2>TalentAlign - AI Interviewer</h2>
+            <div class="modal-body">
+                <p><strong>Problem:</strong> Generic interview questions that don't effectively assess candidates.</p>
+                <p><strong>Solution:</strong> AI-powered system generating personalized, resume-based questions using LLM workflows.</p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>PyPDFLoader for resume analysis</li>
+                    <li>deepseek r1 LLM for dynamic question generation</li>
+                    <li>10-point evaluation scale</li>
+                    <li>Automated Excel reporting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Hydrominex - Smart India Hackathon Winner 🏆</h2>
+            <div class="modal-body">
+                <p><strong>Challenge:</strong> Fatal accidents in mining due to poor visibility in dense fog.</p>
+                <p><strong>Solution:</strong> AI-powered navigation system with fog-penetrating technology.</p>
+                <h3>Achievements:</h3>
+                <ul>
+                    <li>80%+ obstacle detection accuracy</li>
+                    <li>30% improvement with sensor fusion</li>
+                    <li>Patent filed for the technology</li>
+                    <li>Won Smart India Hackathon 2023</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Network Anomaly Detection</h2>
+            <div class="modal-body">
+                <p><strong>Context:</strong> Internship project at Celebal Technologies</p>
+                <p><strong>Objective:</strong> Detect security breaches in network traffic using unsupervised learning.</p>
+                <h3>Implementation:</h3>
+                <ul>
+                    <li>Isolation Forests for outlier detection</li>
+                    <li>Autoencoders for pattern recognition</li>
+                    <li>Real-time traffic analysis</li>
+                    <li>Security breach prediction</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/particles.js"></script>
+</body>
+</html>

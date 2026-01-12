@@ -55,12 +55,31 @@ export default function TemplateGallery() {
       preview: '/preview/restaurant',
       description: 'Perfect for restaurants, cafes, and food businesses with menus and online reservations',
     },
+    {
+      id: 7,
+      name: 'Retro Gaming',
+      category: 'entertainment',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop',
+      preview: '/preview/retro-gaming',
+      description: 'Nostalgic design for retro gaming enthusiasts, arcades, and gaming communities',
+    },
+    {
+      id: 8,
+      name: 'Diary',
+      category: 'personal',
+      image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&auto=format&fit=crop',
+      preview: '/preview/diary',
+      description: 'Personal blogging platform for writers, journalists, and life storytellers',
+    },
   ];
 
   const categories = [
     { id: 'all', name: 'All Templates' },
     { id: 'business', name: 'Business' },
     { id: 'portfolio', name: 'Portfolio' },
+    { id: 'entertainment', name: 'Entertainment' },
+    { id: 'personal', name: 'Personal' },
+    { id: 'gifts', name: 'Gifts' },
   ];
 
   const filteredTemplates =
