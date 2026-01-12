@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jane Smith - Full Stack Developer, UI/UX Designer, and Creative Professional">
+    <title>Jane Smith | Portfolio</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Space+Grotesk:wght@300;400;500;600;700&family=Pacifico&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Bodoni+Moda:wght@400;600;700;900&family=Righteous&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    
+    <canvas id="petals-canvas"></canvas>
+
+    
+    <div class="radial-menu" id="radial-menu">
+        <div class="menu-trigger" id="menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="radial-nav">
+            <a href="#home" class="radial-link">
+                <span class="link-text">Home</span>
+            </a>
+            <a href="#about" class="radial-link">
+                <span class="link-text">About</span>
+            </a>
+            <a href="#skills" class="radial-link">
+                <span class="link-text">Skills</span>
+            </a>
+            <a href="#work" class="radial-link">
+                <span class="link-text">Work</span>
+            </a>
+            <a href="#creative" class="radial-link">
+                <span class="link-text">Creative</span>
+            </a>
+            <a href="#contact" class="radial-link">
+                <span class="link-text">Contact</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <div class="scroll-progress-wrapper">
+        <svg class="progress-ring" width="60" height="60">
+            <circle class="progress-ring-circle" stroke="#FF69B4" stroke-width="3" fill="transparent" r="27" cx="30" cy="30"/>
+        </svg>
+        <span class="progress-text">0%</span>
+    </div>
+
+    
+    <section id="home" class="hero-experimental">
+        <div class="hero-grid">
+            
+            <div class="vertical-text" data-scroll data-scroll-speed="2">
+                <h1 class="name-vertical">JANE</h1>
+            </div>
+
+            
+            <div class="hero-main">
+                <div class="eyebrow-text" data-aos="fade-down">Full Stack Developer × UI/UX Designer × Creative Professional</div>
+
+                <h2 class="hero-headline" data-aos="fade-up" data-aos-delay="200">
+                    <span class="headline-creative">Building</span>
+                    <span class="headline-tech">Beautiful</span>
+                    <span class="headline-bold">Solutions</span>
+                </h2>
+
+                <p class="hero-manifesto" data-aos="fade-up" data-aos-delay="400">
+                    Where <em>design</em> meets <em>development</em>, where <em>code</em> creates magic,
+                    and where <em>ideas</em> come to life.
+                </p>
+
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="600">
+                    <a href="#work" class="cta-primary">
+                        <span>Explore Work</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                    <a class="cta-secondary">
+                        <span>Resume</span>
+                    </a>
+                </div>
+            </div>
+
+            
+            <div class="hero-photo-container" data-aos="zoom-in" data-aos-delay="800">
+                <div class="photo-frame-wrapper">
+                    <div class="photo-frame">
+                        <div class="photo-inner">
+                            <div class="hero-photo" style="background: linear-gradient(135deg, #FF69B4, #FFB6C1); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; font-weight: bold;">JS</div>
+                            <div class="photo-stamp">EST. 2020</div>
+                        </div>
+                        <div class="frame-caption">San Francisco, CA</div>
+                    </div>
+
+                    
+                    <div class="floating-stats">
+                        <div class="stat-bubble" data-aos="fade-up" data-aos-delay="900">
+                            <span class="stat-num">5+</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                        <div class="stat-bubble" data-aos="fade-up" data-aos-delay="1000">
+                            <span class="stat-num">50+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-bubble" data-aos="fade-up" data-aos-delay="1100">
+                            <span class="stat-num">15+</span>
+                            <span class="stat-label">Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>React</span>
+                <span class="dot">•</span>
+                <span>Node.js</span>
+                <span class="dot">•</span>
+                <span>UI/UX Design</span>
+                <span class="dot">•</span>
+                <span>TypeScript</span>
+                <span class="dot">•</span>
+                <span>Photography</span>
+                <span class="dot">•</span>
+                <span>Travel</span>
+                <span class="dot">•</span>
+                <span>Painting</span>
+                <span class="dot">•</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>React</span>
+                <span class="dot">•</span>
+                <span>Node.js</span>
+                <span class="dot">•</span>
+                <span>UI/UX Design</span>
+                <span class="dot">•</span>
+                <span>TypeScript</span>
+                <span class="dot">•</span>
+                <span>Photography</span>
+                <span class="dot">•</span>
+                <span>Travel</span>
+                <span class="dot">•</span>
+                <span>Painting</span>
+                <span class="dot">•</span>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="about-split">
+        <div class="split-container">
+            
+            <div class="split-panel professional" data-aos="fade-right">
+                <div class="panel-number">02</div>
+                <div class="panel-content">
+                    <h3 class="panel-title">The Professional</h3>
+                    <div class="panel-body">
+                        <p class="intro-text">Full-stack developer with 5+ years of experience building scalable web applications and beautiful user interfaces.</p>
+
+                        <div class="credentials">
+                            <div class="credential-item">
+                                <span class="cred-label">Education</span>
+                                <span class="cred-value">B.S. Computer Science • Stanford</span>
+                            </div>
+                            <div class="credential-item">
+                                <span class="cred-label">Experience</span>
+                                <span class="cred-value">Senior Developer @ TechCorp</span>
+                            </div>
+                            <div class="credential-item">
+                                <span class="cred-label">Achievement</span>
+                                <span class="cred-value">Best Innovation Award 2023</span>
+                            </div>
+                        </div>
+
+                        <div class="expertise-tags">
+                            <span>React</span>
+                            <span>JavaScript</span>
+                            <span>TypeScript</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="split-panel creative" data-aos="fade-left">
+                <div class="panel-number">02.5</div>
+                <div class="panel-content">
+                    <h3 class="panel-title creative-title">The Creative</h3>
+                    <div class="panel-body">
+                        <p class="intro-text handwritten">Beyond code and algorithms, I find my rhythm in creative expression...</p>
+
+                        <div class="creative-list">
+                            <div class="creative-item">
+                                <svg class="creative-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                                </svg>
+                                <div>
+                                    <h4>Photography</h4>
+                                    <p>Capturing moments and telling stories</p>
+                                </div>
+                            </div>
+
+                            <div class="creative-item">
+                                <svg class="creative-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                <div>
+                                    <h4>Travel</h4>
+                                    <p>Exploring cultures and new places</p>
+                                </div>
+                            </div>
+
+                            <div class="creative-item">
+                                <svg class="creative-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                                </svg>
+                                <div>
+                                    <h4>Painting</h4>
+                                    <p>Creating art through colors and brushstrokes</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="creative-quote">"Code is poetry, design is art."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="section-divider-wave">
+            <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+                <path d="M0,50 Q300,0 600,50 T1200,50 L1200,100 L0,100 Z" fill="#FFF5F7"/>
+            </svg>
+        </div>
+    </section>
+
+    
+    <section id="skills" class="skills-bento">
+        <div class="container-fluid">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-num">03</span>
+                <h2 class="section-title-large">Expertise</h2>
+            </div>
+
+            <div class="bento-grid">
+                
+                <div class="bento-card large primary" data-aos="zoom-in">
+                    <div class="card-bg"></div>
+                    <div class="card-content">
+                        <h3>React Development</h3>
+                        <p>Building modern, responsive web applications with React and Redux</p>
+                        <div class="skill-meter">
+                            <div class="meter-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="bento-card medium" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-icon">JS</div>
+                    <h4>JavaScript</h4>
+                    <div class="skill-level">Expert</div>
+                </div>
+
+                
+                <div class="bento-card small accent" data-aos="zoom-in" data-aos-delay="200">
+                    <h4>TypeScript</h4>
+                    <span class="badge">85%</span>
+                </div>
+
+                
+                <div class="bento-card wide" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>Node.js</h3>
+                    <div class="tech-stack">
+                        <span>Express.js</span>
+                        <span>MongoDB</span>
+                        <span>PostgreSQL</span>
+                        <span>GraphQL</span>
+                    </div>
+                </div>
+
+                
+                <div class="bento-card tall" data-aos="zoom-in" data-aos-delay="400">
+                    <h4>Languages</h4>
+                    <ul class="lang-list">
+                        <li>English<span>95%</span></li>
+                        <li>Spanish<span>100%</span></li>
+                        <li>French<span>95%</span></li>
+                    </ul>
+                </div>
+
+                
+                <div class="bento-card medium" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card-icon">SQL</div>
+                    <h4>Database</h4>
+                    <p>MySQL • PostgreSQL • MongoDB</p>
+                </div>
+
+                <div class="bento-card medium accent" data-aos="zoom-in" data-aos-delay="600">
+                    <h4>UI/UX Design</h4>
+                    <p>Figma • Adobe XD • Sketch</p>
+                </div>
+
+                
+                <div class="bento-card large gradient" data-aos="zoom-in" data-aos-delay="700">
+                    <h3>Soft Skills</h3>
+                    <div class="soft-skills-grid">
+                        <span>Communication</span>
+                        <span>Brainstorming</span>
+                        <span>Open-minded</span>
+                        <span>Presentation</span>
+                        <span>Detail-oriented</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="work" class="work-horizontal">
+        <div class="section-header sticky-header">
+            <span class="section-num">04</span>
+            <h2 class="section-title-large">Selected Works</h2>
+        </div>
+
+        <div class="horizontal-scroll-wrapper">
+            <div class="scroll-container">
+                
+                <div class="project-panel">
+                    <div class="project-visual">
+                        <div class="project-img-placeholder">
+                            <span class="project-number">01</span>
+                            <h3>E-Commerce Platform</h3>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Full Stack Project</span>
+                        <h3 class="project-name">E-Commerce Platform - Full Stack App</h3>
+                        <p class="project-desc">Modern e-commerce platform with real-time inventory, payment integration, and advanced search features.</p>
+                        <div class="project-tech-tags">
+                            <span>JavaScript</span>
+                            <span>Stripe API</span>
+                            <span>Redux</span>
+                            <span>Tailwind CSS</span>
+                        </div>
+                        <button class="project-details-btn" onclick="openModal('modal1')">View Details →</button>
+                    </div>
+                </div>
+
+                
+                <div class="project-panel accent">
+                    <div class="project-visual">
+                        <div class="project-img-placeholder award">
+                            <span class="project-number">02</span>
+                            <h3>Social Media Dashboard</h3>
+                            <div class="award-badge">Award Winner 🏆</div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Best Innovation Award 2023 Winner</span>
+                        <h3 class="project-name">Social Media Dashboard</h3>
+                        <p class="project-desc">Analytics dashboard for social media management with real-time data visualization and automated reporting.</p>
+                        <div class="project-tech-tags">
+                            <span>Chart.js</span>
+                            <span>D3.js</span>
+                            <span>REST API</span>
+                            <span>WebSockets</span>
+                        </div>
+                        <button class="project-details-btn" onclick="openModal('modal2')">View Details →</button>
+                    </div>
+                </div>
+
+                
+                <div class="project-panel">
+                    <div class="project-visual">
+                        <div class="project-img-placeholder">
+                            <span class="project-number">03</span>
+                            <h3>Task Management App</h3>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Senior Developer @ TechCorp</span>
+                        <h3 class="project-name">Task Management App</h3>
+                        <p class="project-desc">Collaborative task management platform with drag-and-drop interface, real-time updates, and team analytics.</p>
+                        <div class="project-tech-tags">
+                            <span>JavaScript</span>
+                            <span>Drag & Drop</span>
+                            <span>Real-time Updates</span>
+                            <span>Team Collaboration</span>
+                        </div>
+                        <button class="project-details-btn" onclick="openModal('modal3')">View Details →</button>
+                    </div>
+                </div>
+
+                
+                <div class="project-panel end-panel">
+                    <div class="end-content">
+                        <h3>More Coming Soon...</h3>
+                        <p>Currently working on exciting new projects</p>
+                        <a href="#contact" class="end-cta">Let's Collaborate →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="scroll-hint">
+            <span>Scroll →</span>
+        </div>
+    </section>
+
+    
+    <section id="creative" class="creative-magazine">
+        <div class="magazine-grid">
+            
+            <div class="mag-spread title-spread" data-aos="fade-up">
+                <span class="section-num">05</span>
+                <h2 class="spread-title">
+                    <span class="title-line">Beyond</span>
+                    <span class="title-line accent">The Code</span>
+                </h2>
+                <p class="spread-subtitle">A glimpse into my creative world</p>
+            </div>
+
+            
+            <div class="mag-spread fashion-spread" data-aos="fade-up" data-aos-delay="200">
+                <div class="spread-content">
+                    <div class="spread-image">
+                        <div class="polaroid-gallery">
+                            <div class="polaroid polaroid-1">
+                                <img src="files/p1.jpg" alt="Fashion moment 1">
+                            </div>
+                            <div class="polaroid polaroid-2">
+                                <img src="files/p2.jpg" alt="Fashion moment 2">
+                            </div>
+                            <div class="polaroid polaroid-3">
+                                <img src="files/p3.jpg" alt="Fashion moment 3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spread-text">
+                        <h3 class="spread-heading">Photography</h3>
+                        <p class="spread-body">Capturing moments through the lens is my passion. From landscapes to portraits, photography allows me to freeze time and tell visual stories.</p>
+                        <blockquote>"A picture is worth a thousand words"</blockquote>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="mag-spread poetry-spread" data-aos="fade-up" data-aos-delay="400">
+                <div class="spread-content">
+                    <div class="spread-text">
+                        <h3 class="spread-heading handwritten">Travel</h3>
+                        <div class="poem-sample">
+                            <p class="verse">New places to explore,</p>
+                            <p class="verse">Cultures to discover,</p>
+                            <p class="verse">Adventures await...</p>
+                        </div>
+                        <p class="spread-body">Exploring new places and cultures fuels my creativity. Every destination teaches me something new and broadens my perspective on life and design.</p>
+                    </div>
+                    <div class="spread-image">
+                        <div class="polaroid-gallery">
+                            <div class="polaroid polaroid-1">
+                                <img src="files/t1.jpg" alt="Travel moment 1">
+                            </div>
+                            <div class="polaroid polaroid-2">
+                                <img src="files/t2.jpg" alt="Travel moment 2">
+                            </div>
+                            <div class="polaroid polaroid-3">
+                                <img src="files/t3.jpg" alt="Travel moment 3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="mag-spread music-spread" data-aos="fade-up" data-aos-delay="600">
+                <div class="spread-content">
+                    <div class="spread-image">
+                        <div class="polaroid-gallery">
+                            <div class="polaroid polaroid-1">
+                                <img src="files/pt1.jpg" alt="Singing moment 1">
+                            </div>
+                            <div class="polaroid polaroid-2">
+                                <img src="files/pt2.jpg" alt="Singing moment 2">
+                            </div>
+                            <div class="polaroid polaroid-3">
+                                <img src="files/pt3.jpg" alt="Singing moment 3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spread-text">
+                        <h3 class="spread-heading">Painting</h3>
+                        <p class="spread-body">Colors and brushstrokes are my form of expression. Painting allows me to translate emotions into visual art, creating pieces that tell stories without words.</p>
+                        <div class="art-symbols">🎨 🖌️ 🎭</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer id="contact" class="footer-contact">
+        <div class="footer-grid">
+            <div class="footer-left">
+                <h2 class="contact-title">
+                    <span>Let's Create</span>
+                    <span class="highlight">Something</span>
+                    <span>Amazing</span>
+                </h2>
+            </div>
+
+            <div class="footer-right">
+                <div class="contact-info-modern">
+                    <div class="info-item">
+                        <span class="info-label">Email</span>
+                        <a href="mailto:jane.smith@example.com" class="info-value">jane.smith@example.com</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone</span>
+                        <a href="tel:+919112811390" class="info-value">+1 (555) 123-4567</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Location</span>
+                        <span class="info-value">San Francisco, CA</span>
+                    </div>
+                </div>
+
+                <div class="social-modern">
+                    <a class="social-item">
+                        <span class="social-name">LinkedIn</span>
+                        <span class="social-arrow">→</span>
+                    </a>
+                    <a class="social-item">
+                        <span class="social-name">GitHub</span>
+                        <span class="social-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+            <h2>E-Commerce Platform - Full Stack App</h2>
+            <div class="modal-body">
+                <p><strong>Problem:</strong> Generic interview questions that don't effectively assess candidates.</p>
+                <p><strong>Solution:</strong> AI-powered system generating personalized, resume-based questions using Stripe API workflows.</p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Redux for resume analysis</li>
+                    <li>Tailwind CSS Stripe API for dynamic question generation</li>
+                    <li>10-point evaluation scale</li>
+                    <li>Automated Excel reporting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Social Media Dashboard - Best Innovation Award 2023 Winner 🏆</h2>
+            <div class="modal-body">
+                <p><strong>Challenge:</strong> Fatal accidents in mining due to poor visibility in dense fog.</p>
+                <p><strong>Solution:</strong> AI-powered navigation system with fog-penetrating technology.</p>
+                <h3>Achievements:</h3>
+                <ul>
+                    <li>80%+ obstacle detection accuracy</li>
+                    <li>30% improvement with sensor fusion</li>
+                    <li>Patent filed for the technology</li>
+                    <li>Won Best Innovation Award 2023 2023</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Task Management App</h2>
+            <div class="modal-body">
+                <p><strong>Context:</strong> Internship project at Celebal Technologies</p>
+                <p><strong>Objective:</strong> Detect security breaches in network traffic using unsupervised learning.</p>
+                <h3>Implementation:</h3>
+                <ul>
+                    <li>Real-time Updates for outlier detection</li>
+                    <li>Drag Autoencoders Drop for pattern recognition</li>
+                    <li>Real-time traffic analysis</li>
+                    <li>Team Collaboration breach prediction</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/particles.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+
+@media screen and (min-width: 1600px) {
+    .hero-grid {
+        max-width: 1600px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .hero-headline {
+        font-size: 4rem;
+    }
+
+    .headline-bold {
+        font-size: 5rem;
+    }
+
+    .name-vertical {
+        font-size: 5rem;
+    }
+
+    .section-title-large {
+        font-size: 5rem;
+    }
+
+    .spread-title {
+        font-size: 6rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 80px 1fr 280px;
+        gap: 30px;
+    }
+
+    .name-vertical {
+        font-size: 4rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .hero-headline {
+        font-size: 3rem;
+    }
+
+    .headline-creative {
+        font-size: 3rem;
+    }
+
+    .headline-bold {
+        font-size: 4rem;
+    }
+
+    .hero-manifesto {
+        font-size: 1.1rem;
+    }
+
+    .photo-placeholder {
+        font-size: 7rem;
+    }
+
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .bento-card.large { grid-column: span 2; }
+    .bento-card.wide { grid-column: span 3; }
+
+    .contact-title {
+        font-size: 4rem;
+    }
+
+    .spread-title {
+        font-size: 5rem;
+    }
+
+    .spread-heading {
+        font-size: 3rem;
+    }
+
+    .section-title-large {
+        font-size: 4.5rem;
+    }
+
+    .panel-title {
+        font-size: 3rem;
+    }
+
+    .project-panel {
+        min-width: 700px;
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .radial-menu {
+        top: 20px;
+        right: 20px;
+    }
+
+    .radial-link {
+        font-size: 0.85rem;
+        padding: 10px 16px;
+    }
+
+    .radial-menu.active .radial-link:nth-child(1) { transform: rotate(-90deg) translate(90px) rotate(90deg); }
+    .radial-menu.active .radial-link:nth-child(2) { transform: rotate(-60deg) translate(90px) rotate(60deg); }
+    .radial-menu.active .radial-link:nth-child(3) { transform: rotate(-30deg) translate(90px) rotate(30deg); }
+    .radial-menu.active .radial-link:nth-child(4) { transform: rotate(0deg) translate(90px) rotate(0deg); }
+    .radial-menu.active .radial-link:nth-child(5) { transform: rotate(30deg) translate(90px) rotate(-30deg); }
+    .radial-menu.active .radial-link:nth-child(6) { transform: rotate(60deg) translate(90px) rotate(-60deg); }
+
+    .hero-experimental {
+        padding: 80px 20px 20px;
+    }
+
+    .hero-grid {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 40px;
+    }
+
+    .vertical-text {
+        writing-mode: horizontal-tb;
+        text-align: center;
+    }
+
+    .name-vertical {
+        font-size: 3.5rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+
+    .headline-creative {
+        font-size: 2rem;
+    }
+
+    .headline-bold {
+        font-size: 3rem;
+    }
+
+    .hero-manifesto {
+        font-size: 1rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+    }
+
+    .cta-primary, .cta-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-photo-container {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .floating-stats {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .stat-bubble {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+    }
+
+    .split-container {
+        grid-template-columns: 1fr;
+    }
+
+    .split-panel {
+        padding: 60px 30px;
+    }
+
+    .panel-title {
+        font-size: 2.5rem;
+    }
+
+    .panel-number {
+        font-size: 5rem;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 15px;
+    }
+
+    .bento-card.large,
+    .bento-card.medium,
+    .bento-card.small,
+    .bento-card.wide,
+    .bento-card.tall {
+        grid-column: span 1;
+        grid-row: span 1;
+        min-height: 150px;
+    }
+
+    .section-title-large {
+        font-size: 3rem;
+    }
+
+    .project-panel {
+        min-width: 90vw;
+        height: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .project-visual {
+        min-height: 250px;
+    }
+
+    .project-info {
+        padding: 30px;
+    }
+
+    .project-number {
+        font-size: 5rem;
+    }
+
+    .project-img-placeholder h3 {
+        font-size: 2rem;
+    }
+
+    .spread-title {
+        font-size: 3.5rem;
+    }
+
+    .spread-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .spread-heading {
+        font-size: 2.5rem;
+    }
+
+    .spread-body {
+        font-size: 1rem;
+    }
+
+    .vinyl-record {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-experimental {
+        padding: 60px 20px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact-title {
+        font-size: 3rem;
+    }
+
+    .scroll-progress-wrapper {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .progress-ring {
+        width: 50px;
+        height: 50px;
+    }
+
+    .progress-ring-circle {
+        r: 22;
+    }
+
+    .progress-text {
+        font-size: 0.6rem;
+    }
+
+    .marquee-content span {
+        font-size: 1rem;
+    }
+
+    .scroll-hint {
+        bottom: 20px;
+        right: 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-experimental {
+        padding: 60px 15px 15px;
+    }
+
+    .name-vertical {
+        font-size: 2.5rem;
+    }
+
+    .hero-headline {
+        font-size: 2rem;
+    }
+
+    .headline-creative {
+        font-size: 1.8rem;
+    }
+
+    .headline-bold {
+        font-size: 2.5rem;
+    }
+
+    .section-title-large {
+        font-size: 2.5rem;
+    }
+
+    .spread-title {
+        font-size: 2.5rem;
+    }
+
+    .panel-title {
+        font-size: 2rem;
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+    }
+
+    .stat-bubble {
+        padding: 15px 20px;
+    }
+
+    .stat-num {
+        font-size: 2rem;
+    }
+
+    .cta-primary, .cta-secondary {
+        padding: 14px 30px;
+        font-size: 0.95rem;
+    }
+
+    .bento-card {
+        padding: 20px;
+    }
+
+    .project-panel {
+        min-width: 95vw;
+    }
+
+    .spread-heading {
+        font-size: 2rem;
+    }
+
+    .radial-menu.active .radial-link {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .radial-menu.active .radial-link:nth-child(1) { transform: rotate(-90deg) translate(80px) rotate(90deg); }
+    .radial-menu.active .radial-link:nth-child(2) { transform: rotate(-60deg) translate(80px) rotate(60deg); }
+    .radial-menu.active .radial-link:nth-child(3) { transform: rotate(-30deg) translate(80px) rotate(30deg); }
+    .radial-menu.active .radial-link:nth-child(4) { transform: rotate(0deg) translate(80px) rotate(0deg); }
+    .radial-menu.active .radial-link:nth-child(5) { transform: rotate(30deg) translate(80px) rotate(-30deg); }
+    .radial-menu.active .radial-link:nth-child(6) { transform: rotate(60deg) translate(80px) rotate(-60deg); }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .radial-link,
+    .cta-primary,
+    .cta-secondary,
+    .project-details-btn,
+    .submit-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .bento-card:hover,
+    .project-panel:hover {
+        transform: none;
+    }
+
+    .stat-bubble:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .marquee-content {
+        animation: none;
+    }
+
+    .vinyl-record {
+        animation: none;
+    }
+}
+
+@media print {
+    .radial-menu,
+    .scroll-progress-wrapper,
+    .cursor-dot,
+    .cursor-outline,
+    #petals-canvas,
+    .scroll-hint {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    .hero-grid,
+    .split-container,
+    .contact-grid {
+        display: block;
+    }
+
+    .section {
+        page-break-inside: avoid;
+    }
+}
