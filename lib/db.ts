@@ -59,21 +59,23 @@ async function getDb() {
 /** All reviews — for admin panel */
 export async function getReviews(): Promise<Review[]> {
   const db = await getDb();
-  return db
+  const docs = await db
     .collection<Review>('reviews')
     .find({}, { projection: { _id: 0 } })
     .sort({ timestamp: -1 })
-    .toArray() as Review[];
+    .toArray();
+  return docs as unknown as Review[];
 }
 
 /** Approved reviews only — for public carousel */
 export async function getApprovedReviews(): Promise<Review[]> {
   const db = await getDb();
-  return db
+  const docs = await db
     .collection<Review>('reviews')
     .find({ status: 'approved' }, { projection: { _id: 0 } })
     .sort({ timestamp: -1 })
-    .toArray() as Review[];
+    .toArray();
+  return docs as unknown as Review[];
 }
 
 /** Insert a new review */
@@ -104,11 +106,12 @@ export async function deleteReview(id: string): Promise<boolean> {
 /** All submissions — for admin panel */
 export async function getSubmissions(): Promise<Submission[]> {
   const db = await getDb();
-  return db
+  const docs = await db
     .collection('submissions')
     .find({}, { projection: { _id: 0 } })
     .sort({ timestamp: -1 })
-    .toArray() as Submission[];
+    .toArray();
+  return docs as unknown as Submission[];
 }
 
 /** Insert a new submission */
