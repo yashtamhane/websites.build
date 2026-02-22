@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import ReviewsPanel from './ReviewsPanel';
 
 interface Submission {
   id: string;
@@ -25,8 +26,9 @@ interface Submission {
 }
 
 export default function Dashboard() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
+  const [activeSection, setActiveSection] = useState<'submissions' | 'reviews'>('submissions');
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [selectedSubmission, setSelectedSubmission] = useState<Submission | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -104,6 +106,29 @@ export default function Dashboard() {
       </header>
 
       <div className="max-w-7xl mx-auto p-6">
+        {/* Section tabs */}
+        <div className="flex gap-1 mb-6 bg-primary/5 rounded-xl p-1 w-fit">
+          {(['submissions', 'reviews'] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveSection(tab)}
+              className={`px-5 py-2.5 rounded-lg text-sm font-semibold capitalize transition-all ${
+                activeSection === tab
+                  ? 'bg-white text-primary shadow-sm'
+                  : 'text-secondary hover:text-primary'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Reviews panel */}
+        {activeSection === 'reviews' && <ReviewsPanel />}
+
+        {/* Submissions panel */}
+        {activeSection === 'submissions' && <>
+
         {/* Search */}
         <div className="mb-6">
           <input
@@ -271,6 +296,7 @@ export default function Dashboard() {
             </div>
           </div>
         )}
+        </>}
       </div>
     </div>
   );

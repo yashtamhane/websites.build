@@ -33,7 +33,7 @@ export default function FeaturedTemplates() {
   ];
 
   return (
-    <section id="templates" className="py-16 px-4 sm:px-6 lg:px-8">
+    <section id="templates" className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-primary text-center mb-4">
           Featured Templates
