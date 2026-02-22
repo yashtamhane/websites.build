@@ -78,6 +78,20 @@ export async function getApprovedReviews(): Promise<Review[]> {
   return docs as unknown as Review[];
 }
 
+/**
+ * Deduplication check — returns true if a review from this email already
+ * exists within the last `withinSeconds` seconds. Used to silently drop
+ * duplicate requests (e.g. accidental double-tap / network retry).
+ */
+export async function hasRecentReview(email: string, withinSeconds: number): Promise<boolean> {
+  const db = await getDb();
+  const since = new Date(Date.now() - withinSeconds * 1000).toISOString();
+  const doc = await db
+    .collection('reviews')
+    .findOne({ email, timestamp: { $gte: since } }, { projection: { _id: 1 } });
+  return doc !== null;
+}
+
 /** Insert a new review */
 export async function saveReview(review: Review): Promise<void> {
   const db = await getDb();

@@ -316,12 +316,15 @@ function ReviewForm({
       if (data.success) {
         setStatus('success')
         onSubmitted() // trigger re-fetch in parent so review appears immediately
+        // submittingRef stays true — success screen prevents any resubmission
       } else {
         // Surface server-side error (e.g. profanity caught server-side)
         setErrors({ reviewText: data.message || 'Submission failed.' })
+        submittingRef.current = false // allow retry
       }
     } catch {
       setStatus('error')
+      submittingRef.current = false // allow retry on network error
     } finally {
       setIsSubmitting(false)
     }
@@ -519,8 +522,8 @@ function ReviewForm({
 
 // ─── Main Reviews section ───────────────────────────────────────────────────
 
-export default function Reviews() {
-  const [reviews, setReviews] = useState<Review[]>([])
+export default function Reviews({ initialReviews = [] }: { initialReviews?: Review[] }) {
+  const [reviews, setReviews] = useState<Review[]>(initialReviews)
   const trackRef = useRef<HTMLDivElement>(null)
   const pausedRef = useRef(false)
   const lastTimestampRef = useRef(0)

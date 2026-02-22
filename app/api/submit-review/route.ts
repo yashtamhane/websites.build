@@ -5,7 +5,7 @@ import { sanitizeForEmail } from '@/lib/validation';
 import { containsProfanity } from '@/lib/profanityFilter';
 import { isPortfolioSite } from '@/lib/portfolioSites';
 import nodemailer from 'nodemailer';
-import { saveReview } from '@/lib/db';
+import { saveReview, hasRecentReview } from '@/lib/db';
 import type { Review } from '@/lib/db';
 
 const transporter = nodemailer.createTransport({
@@ -121,6 +121,14 @@ export async function POST(request: Request) {
       timestamp: new Date().toISOString(),
       status: 'pending',
     };
+
+    // ── Deduplication — same email within 60 s = silently treat as success ───
+    if (await hasRecentReview(emailResult.sanitized!, 60)) {
+      return NextResponse.json(
+        { success: true, message: 'Review submitted!' },
+        { status: 200 }
+      );
+    }
 
     // ── Save to database ─────────────────────────────────────────────────────
     await saveReview(submission as Review);
