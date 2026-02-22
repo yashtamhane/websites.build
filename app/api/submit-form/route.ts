@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
 import { emailService } from '@/lib/email';
+import { saveSubmission } from '@/lib/db';
 import { checkRateLimit, RateLimitPresets } from '@/lib/rateLimit';
 import { validateEmail, validateName, validatePhone, validateTextField, validateMessage } from '@/lib/validation';
 
@@ -163,23 +162,8 @@ export async function POST(request: Request) {
       ...sanitizedData,
     };
 
-    // Read existing submissions
-    const filePath = path.join(process.cwd(), 'data', 'submissions.json');
-    let submissions = [];
-
-    try {
-      const fileContent = await fs.readFile(filePath, 'utf-8');
-      submissions = JSON.parse(fileContent);
-    } catch (error) {
-      // File doesn't exist or is empty, start with empty array
-      submissions = [];
-    }
-
-    // Add new submission
-    submissions.push(submission);
-
-    // Write back to file
-    await fs.writeFile(filePath, JSON.stringify(submissions, null, 2));
+    // Save to database
+    await saveSubmission(submission);
 
     // Send emails (don't block response if email fails)
     Promise.all([

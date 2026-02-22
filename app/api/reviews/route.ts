@@ -1,40 +1,21 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-interface StoredReview {
-  id: string;
-  name: string;
-  websiteType: 'business' | 'portfolio';
-  reviewText: string;
-  websiteUrl?: string;
-  rating: number;
-  status: string;
-}
+import { getApprovedReviews } from '@/lib/db';
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'reviews.json');
+    const reviews = await getApprovedReviews();
 
-    if (!fs.existsSync(filePath)) {
-      return NextResponse.json({ success: true, reviews: [] });
-    }
+    // Map storage field names to the shape the UI expects
+    const mapped = reviews.map((r) => ({
+      id: r.id,
+      name: r.name,
+      websiteType: r.websiteType,
+      text: r.reviewText,
+      websiteUrl: r.websiteUrl || undefined,
+      rating: r.rating,
+    }));
 
-    const all: StoredReview[] = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-
-    // Only serve approved reviews; map storage keys to the shape the UI expects
-    const approved = all
-      .filter((r) => r.status === 'approved')
-      .map((r) => ({
-        id: r.id,
-        name: r.name,
-        websiteType: r.websiteType,
-        text: r.reviewText,          // storage uses "reviewText", UI uses "text"
-        websiteUrl: r.websiteUrl || undefined,
-        rating: r.rating,
-      }));
-
-    return NextResponse.json({ success: true, reviews: approved });
+    return NextResponse.json({ success: true, reviews: mapped });
   } catch (error) {
     console.error('Error fetching reviews:', error);
     return NextResponse.json({ success: false, reviews: [] });

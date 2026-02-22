@@ -5,8 +5,8 @@ import { sanitizeForEmail } from '@/lib/validation';
 import { containsProfanity } from '@/lib/profanityFilter';
 import { isPortfolioSite } from '@/lib/portfolioSites';
 import nodemailer from 'nodemailer';
-import fs from 'fs';
-import path from 'path';
+import { saveReview } from '@/lib/db';
+import type { Review } from '@/lib/db';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.hostinger.com',
@@ -122,19 +122,8 @@ export async function POST(request: Request) {
       status: 'pending',
     };
 
-    // ── Save to reviews.json ────────────────────────────────────────────────
-    try {
-      const dataDir = path.join(process.cwd(), 'data');
-      if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-      const filePath = path.join(dataDir, 'reviews.json');
-      const existing = fs.existsSync(filePath)
-        ? JSON.parse(fs.readFileSync(filePath, 'utf-8'))
-        : [];
-      existing.push(submission);
-      fs.writeFileSync(filePath, JSON.stringify(existing, null, 2), 'utf-8');
-    } catch (fsErr) {
-      console.error('❌ Failed to save review to file:', fsErr);
-    }
+    // ── Save to database ─────────────────────────────────────────────────────
+    await saveReview(submission as Review);
 
     // ── Notify us via email ─────────────────────────────────────────────────
     try {

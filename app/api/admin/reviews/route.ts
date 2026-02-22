@@ -1,19 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/authOptions';
-import fs from 'fs';
-import path from 'path';
-
-const REVIEWS_PATH = path.join(process.cwd(), 'data', 'reviews.json');
-
-function readReviews(): Record<string, unknown>[] {
-  if (!fs.existsSync(REVIEWS_PATH)) return [];
-  return JSON.parse(fs.readFileSync(REVIEWS_PATH, 'utf-8'));
-}
-
-function writeReviews(data: Record<string, unknown>[]): void {
-  fs.writeFileSync(REVIEWS_PATH, JSON.stringify(data, null, 2), 'utf-8');
-}
+import { getReviews, updateReviewStatus, deleteReview } from '@/lib/db';
 
 function unauthorized() {
   return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
@@ -24,7 +12,7 @@ export async function GET() {
   const session = await getServerSession(authOptions);
   if (!session) return unauthorized();
 
-  const reviews = readReviews();
+  const reviews = await getReviews();
   return NextResponse.json({ success: true, reviews });
 }
 
@@ -43,17 +31,13 @@ export async function PATCH(request: Request) {
       );
     }
 
-    const reviews = readReviews();
-    const idx = reviews.findIndex((r) => r.id === id);
-    if (idx === -1) {
+    const found = await updateReviewStatus(id, status);
+    if (!found) {
       return NextResponse.json(
         { success: false, message: 'Review not found.' },
         { status: 404 }
       );
     }
-
-    reviews[idx] = { ...reviews[idx], status };
-    writeReviews(reviews);
 
     return NextResponse.json({ success: true });
   } catch {
@@ -79,17 +63,14 @@ export async function DELETE(request: Request) {
       );
     }
 
-    const reviews = readReviews();
-    const filtered = reviews.filter((r) => r.id !== id);
-
-    if (filtered.length === reviews.length) {
+    const found = await deleteReview(id);
+    if (!found) {
       return NextResponse.json(
         { success: false, message: 'Review not found.' },
         { status: 404 }
       );
     }
 
-    writeReviews(filtered);
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(
