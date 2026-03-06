@@ -145,7 +145,7 @@ function ReviewCard({ review }: { review: Review }) {
         <StarDisplay rating={review.rating} />
       </div>
 
-      {/* Quote icon */}
+      {/* Opening quote icon */}
       <svg
         width={22}
         height={22}
@@ -158,10 +158,20 @@ function ReviewCard({ review }: { review: Review }) {
       {/* Review text */}
       <p
         className="text-secondary text-sm leading-relaxed italic"
-        style={{ flexGrow: 1, marginBottom: 16, display: '-webkit-box', WebkitLineClamp: 7, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+        style={{ flexGrow: 1, marginBottom: 10, display: '-webkit-box', WebkitLineClamp: 7, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
       >
-        {highlightBrand(review.text)}{'"'}
+        {highlightBrand(review.text)}
       </p>
+
+      {/* Closing quote icon */}
+      <svg
+        width={22}
+        height={22}
+        viewBox="0 0 24 24"
+        style={{ fill: '#f15a25', opacity: 0.2, marginBottom: 6, flexShrink: 0, alignSelf: 'flex-end', transform: 'rotate(180deg)' }}
+      >
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+      </svg>
 
       {/* Attribution */}
       <div style={{ borderTop: '1px solid rgba(67,73,77,0.1)', paddingTop: 14 }}>
@@ -528,11 +538,21 @@ export default function Reviews({ initialReviews = [] }: { initialReviews?: Revi
   const pausedRef = useRef(false)
   const lastTimestampRef = useRef(0)
   const animRef = useRef<number | undefined>(undefined)
+  const cardPositionsRef = useRef<number[]>([])
+  const [containerHeight, setContainerHeight] = useState(380)
   const [showForm, setShowForm] = useState(false)
   const SPEED = 38 // px/s
+  const CARD_SLOT = 320 // card width (300) + gap (20)
 
-  // Derive allCards inside the component so it reacts to state
-  const allCards = reviews.length > 0 ? [...reviews, ...reviews] : []
+  // Initialise card positions whenever the reviews array changes
+  useEffect(() => {
+    cardPositionsRef.current = reviews.map((_, i) => i * CARD_SLOT)
+  }, [reviews.length])
+
+  // Measure the real card height from the first rendered card
+  const measureHeight = useCallback((node: HTMLDivElement | null) => {
+    if (node) setContainerHeight(node.offsetHeight + 32) // 32 = 16px top + 16px bottom padding
+  }, [])
 
   // Fetch approved reviews from the API
   const fetchReviews = useCallback(async () => {
@@ -549,18 +569,44 @@ export default function Reviews({ initialReviews = [] }: { initialReviews?: Revi
     fetchReviews()
   }, [fetchReviews])
 
-  // Auto-scroll animation
+  // Auto-scroll: each card moves left; when it exits the left edge it teleports
+  // to just after the rightmost card — true circular loop, zero duplication.
   const animate = useCallback((timestamp: number) => {
     const track = trackRef.current
     if (track) {
-      if (!pausedRef.current && lastTimestampRef.current > 0) {
+      const positions = cardPositionsRef.current
+      const cards = track.querySelectorAll<HTMLElement>('[data-card]')
+
+      if (
+        !pausedRef.current &&
+        lastTimestampRef.current > 0 &&
+        positions.length >= 2 &&
+        positions.length === cards.length
+      ) {
         const dt = Math.min((timestamp - lastTimestampRef.current) / 1000, 0.05)
-        track.scrollLeft += SPEED * dt
-        const halfWidth = track.scrollWidth / 2
-        if (halfWidth > 0 && track.scrollLeft >= halfWidth) {
-          track.scrollLeft -= halfWidth
+        const delta = SPEED * dt
+
+        // Shift every card left and track the rightmost position
+        let maxPos = -Infinity
+        for (let i = 0; i < positions.length; i++) {
+          positions[i] -= delta
+          if (positions[i] > maxPos) maxPos = positions[i]
+        }
+
+        // Recycle any card whose right edge has cleared the left boundary
+        for (let i = 0; i < positions.length; i++) {
+          if (positions[i] + 300 < 0) {
+            maxPos += CARD_SLOT
+            positions[i] = maxPos
+          }
+        }
+
+        // Write transforms
+        for (let i = 0; i < cards.length; i++) {
+          cards[i].style.transform = `translateX(${Math.round(positions[i])}px)`
         }
       }
+
       lastTimestampRef.current = timestamp
     }
     animRef.current = requestAnimationFrame(animate)
@@ -576,8 +622,42 @@ export default function Reviews({ initialReviews = [] }: { initialReviews?: Revi
   const scrollBy = (direction: 'left' | 'right') => {
     const track = trackRef.current
     if (!track) return
-    const CARD_W = 300 + 20
-    track.scrollTo({ left: track.scrollLeft + (direction === 'right' ? CARD_W : -CARD_W), behavior: 'smooth' })
+    const positions = cardPositionsRef.current
+    if (positions.length === 0) return
+    const cw = track.clientWidth
+
+    if (direction === 'right') {
+      // Cards move left — recycle any that exit the left edge
+      let maxPos = -Infinity
+      for (let i = 0; i < positions.length; i++) {
+        positions[i] -= CARD_SLOT
+        if (positions[i] > maxPos) maxPos = positions[i]
+      }
+      for (let i = 0; i < positions.length; i++) {
+        if (positions[i] + 300 < 0) {
+          maxPos += CARD_SLOT
+          positions[i] = maxPos
+        }
+      }
+    } else {
+      // Cards move right — recycle any that exit the right edge
+      let minPos = Infinity
+      for (let i = 0; i < positions.length; i++) {
+        positions[i] += CARD_SLOT
+        if (positions[i] < minPos) minPos = positions[i]
+      }
+      for (let i = 0; i < positions.length; i++) {
+        if (positions[i] >= cw + CARD_SLOT) {
+          minPos -= CARD_SLOT
+          positions[i] = minPos
+        }
+      }
+    }
+
+    const cards = track.querySelectorAll<HTMLElement>('[data-card]')
+    for (let i = 0; i < cards.length; i++) {
+      cards[i].style.transform = `translateX(${Math.round(positions[i])}px)`
+    }
   }
 
   return (
@@ -594,8 +674,17 @@ export default function Reviews({ initialReviews = [] }: { initialReviews?: Revi
           </p>
         </div>
 
-        {/* Carousel — only shown when there are reviews */}
-        {reviews.length > 0 && (
+        {/* Static grid for 1–4 reviews (no arrows, no scroll) */}
+        {reviews.length > 0 && reviews.length <= 4 && (
+          <div className="flex flex-wrap justify-center gap-5 py-4">
+            {reviews.map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
+          </div>
+        )}
+
+        {/* Circular carousel for 5+ reviews */}
+        {reviews.length > 4 && (
           <div className="relative">
             {/* Fade edges */}
             <div
@@ -618,16 +707,33 @@ export default function Reviews({ initialReviews = [] }: { initialReviews?: Revi
               </svg>
             </button>
 
-            {/* Scrollable track */}
+            {/* Circular track — cards are absolutely positioned and recycled by JS */}
             <div
               ref={trackRef}
-              className="flex gap-5 overflow-x-hidden py-4 px-2"
-              style={{ scrollBehavior: 'auto', cursor: 'grab' }}
+              style={{
+                position: 'relative',
+                overflow: 'hidden',
+                height: containerHeight,
+                cursor: 'grab',
+              }}
               onMouseEnter={() => { pausedRef.current = true }}
               onMouseLeave={() => { pausedRef.current = false }}
             >
-              {allCards.map((review, idx) => (
-                <ReviewCard key={`${review.id}-${idx}`} review={review} />
+              {reviews.map((review, idx) => (
+                <div
+                  key={review.id}
+                  data-card=""
+                  ref={idx === 0 ? measureHeight : undefined}
+                  style={{
+                    position: 'absolute',
+                    top: 16,
+                    left: 0,
+                    transform: `translateX(${idx * CARD_SLOT}px)`,
+                    willChange: 'transform',
+                  }}
+                >
+                  <ReviewCard review={review} />
+                </div>
               ))}
             </div>
 
